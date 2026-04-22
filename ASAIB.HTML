@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>نظام إدارة شؤون الأفراد</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #1a1a1a; color: white; text-align: center; padding: 20px; }
+        .dashboard { background: #2c2c2c; padding: 20px; border-radius: 15px; border: 2px solid #d4af37; display: inline-block; width: 90%; max-width: 900px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; color: black; }
+        th, td { border: 1px solid #444; padding: 12px; text-align: center; }
+        th { background-color: #d4af37; color: black; font-weight: bold; }
+        .btn-add { background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-bottom: 10px; }
+        .btn-add:hover { background-color: #218838; }
+        h2 { color: #d4af37; text-shadow: 1px 1px 2px black; }
+    </style>
+    <script>
+        // قفل الأمان
+        var password = "";
+        while (password !== "2026") { 
+            password = prompt("سيدي، يرجى إدخال رمز الوصول للنظام:");
+            if (password === null) {
+                window.stop();
+                document.documentElement.innerHTML = "<body style='background:#000; color:red; text-align:center;'><h1>تم حظر الوصول</h1></body>";
+                break;
+            }
+        }
+
+        // دالة إضافة الأشخاص
+        function addPerson() {
+            var table = document.getElementById("membersTable");
+            var name = prompt("ادخل الاسم الكامل:");
+            var rank = prompt("ادخل الصنف (مثلاً: مشاة، هندسة، دروع):");
+            var office = prompt("ادخل المكتب التابع له:");
+
+            if (name && rank && office) {
+                var row = table.insertRow(-1);
+                row.insertCell(0).innerHTML = name;
+                row.insertCell(1).innerHTML = rank;
+                row.insertCell(2).innerHTML = office;
+            } else {
+                alert("سيدي، يرجى إكمال كافة البيانات.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2>نظام أفراد المقاومة والحشد</h2>
+        <p>إدارة البيانات المركزية - سيدي منتظر</p>
+        <hr border="1" color="#d4af37">
+        
+        <button class="btn-add" onclick="addPerson()">+ إضافة شخص جديد</button>
+
+        <table id="membersTable">
+            <thead>
+                <tr>
+                    <th>الاسم الكامل</th>
+                    <th>الصنف</th>
+                    <th>المكتب / التشكيل</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>منتظر حميد شاطي</td>
+                    <td>آمر نظام</td>
+                    <td>مكتب ميسان</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="margin-top: 20px; font-size: 12px; color: #777;">نظام إدارة البيانات | 2026</p>
+
+</body>
+</html>
