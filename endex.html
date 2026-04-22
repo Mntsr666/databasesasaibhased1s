@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دخول الموظف المسؤول - منظومة ميسان</title>
+    <style>
+        body { background-color: #0d0d0d; color: #e0e0e0; font-family: 'Arial', sans-serif; text-align: center; margin: 0; padding: 0; }
+        .login-box { margin-top: 100px; padding: 30px; background: #1a1a1a; display: inline-block; border: 2px solid #d4af37; border-radius: 10px; box-shadow: 0 0 20px #d4af37; }
+        input { padding: 10px; width: 80%; margin: 10px 0; border-radius: 5px; border: 1px solid #d4af37; background: #222; color: white; text-align: center; }
+        button { background: #d4af37; color: black; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        #secure-content { display: none; } /* إخفاء المحتوى حتى يتم إدخال الرمز */
+        .header { background: #d4af37; color: black; padding: 15px; font-weight: bold; }
+        table { width: 90%; margin: 20px auto; border-collapse: collapse; background: #1a1a1a; }
+        th, td { border: 1px solid #444; padding: 10px; text-align: center; }
+        th { background: #333; color: #d4af37; }
+    </style>
+</head>
+<body>
+
+<div id="login-form" class="login-box">
+    <h2 style="color: #d4af37;">بوابة الدخول الأمنية</h2>
+    <p>يرجى إدخال رمز الوصول للموظف المسؤول</p>
+    <input type="password" id="passkey" placeholder="ادخل الباسوورد هنا">
+    <br>
+    <button onclick="checkAccess()">دخول للنظام</button>
+    <p id="error-msg" style="color: red; display: none;">الرمز غير صحيح سيدي!</p>
+</div>
+
+<div id="secure-content">
+    <div class="header">منظومة الملاك الموحد - مكتب ميسان</div>
+    <table>
+        <thead>
+            <tr>
+                <th>الاسم</th>
+                <th>المنصب</th>
+                <th>جهة الارتباط</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>الشيخ أبو آمنة الكعبي</td><td>المسؤول العام</td><td>عصائب أهل الحق</td></tr>
+            <tr><td>أبو تقوى الساعدي</td><td>آمر لواء إخوة زينب</td><td>القيادة الميدانية</td></tr>
+            <tr><td style="color: #00ffcc;">منتظر حميد شاطي الزيداوي</td><td>موظف الحاسبة</td><td>المقر العام</td></tr>
+            <tr><td>الشيخ عدنان الغنامي</td><td>ملف سياسي</td><td>عصائب أهل الحق</td></tr>
+        </tbody>
+    </table>
+    <button onclick="location.reload()" style="background: red; color: white;">تسجيل خروج</button>
+</div>
+
+<script>
+    function checkAccess() {
+        var psw = document.getElementById("passkey").value;
+        // الرمز السري هنا هو 2026 (يمكنك تغييره لأي رقم تريده)
+        if (psw === "2026") {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("secure-content").style.display = "block";
+        } else {
+            document.getElementById("error-msg").style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
